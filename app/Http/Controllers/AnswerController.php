@@ -3,33 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Question;
+use App\Answer;
 use Illuminate\Support\Facades\Auth;
 
-
-class QuestionController extends Controller
+class AnswerController extends Controller
 {
-<<<<<<< HEAD
 
-=======
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
->>>>>>> question
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-=======
->>>>>>> question
     public function index()
     {
         //
@@ -62,9 +51,11 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Question $question)
+    public function show($question, $answer)
     {
-        return view('question')->with('question',$question);
+        $answer = Answer::find($answer);
+
+        return view('answer')->with(['answer' => $answer, 'question' => $question]);
     }
 
     /**
