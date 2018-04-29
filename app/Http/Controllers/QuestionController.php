@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class QuestionController extends Controller
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
     public function __construct()
@@ -17,19 +18,28 @@ class QuestionController extends Controller
         $this->middleware('auth');
     }
 >>>>>>> question
+=======
+
+>>>>>>> answer
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> answer
     public function __construct()
     {
         $this->middleware('auth');
     }
 
+<<<<<<< HEAD
 =======
 >>>>>>> question
+=======
+>>>>>>> answer
     public function index()
     {
         //
