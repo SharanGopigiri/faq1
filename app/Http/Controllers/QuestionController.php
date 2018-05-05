@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\RepliedToThread;
 use Illuminate\Http\Request;
 use App\Question;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class QuestionController extends Controller
 {
@@ -27,11 +29,15 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Question $question)
     {
 
         $question = new Question;
+
+        auth()->user()->notify(new RepliedToThread($question));
+
         $edit = FALSE;
+
         return view('questionForm', ['question' => $question,'edit' => $edit  ]);
 
     }

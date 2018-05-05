@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Answer;
 use App\Question;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -27,6 +28,9 @@ class AnswerController extends Controller
     public function create($question)
     {
         $answer = new Answer;
+
+
+
         $edit = FALSE;
         return view('answerForm', ['answer' => $answer,'edit' => $edit, 'question' =>$question  ]);
     }

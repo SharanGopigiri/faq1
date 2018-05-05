@@ -58,6 +58,22 @@
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <span class="glyphicon glyphicon-globe"></span>Notifications<span class="badge">{{count(auth()->user()->unreadNotifications)}}</span>
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                @foreach(auth()->user()->unreadNotifications as $notification)
+                                    @include('layouts.notification.'.snake_case(class_basename($notification->type)))
+                                @endforeach
+
+
+
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 My Account <span class="caret"></span>
                             </a>
 
@@ -82,6 +98,7 @@
                                 </form>
                             </div>
                         </li>
+
                     @endguest
                 </ul>
 

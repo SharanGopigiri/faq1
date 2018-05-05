@@ -39,6 +39,13 @@ Route::resources([
 ]);
 Route::post('profile', 'UserController@update_avatar');
 
+Route::get('/test',function(){
+    $notifications=auth()->user()->unreadNotifications;
+    foreach($notifications as $notification){
+        ($notification->data['user']['name']);
+    }
+});
+
 
 
 
