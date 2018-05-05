@@ -6,7 +6,14 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">My Profile</div>
-
+                    <img src="/home/sharan/Pictures/avatars/{{$profile->avatar}}"
+                         style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
+                    <form enctype="multipart/form-data" action="/profile" method="POST">
+                        <label>Update Profile Image</label>
+                        <input type="file" name="avatar">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="submit" class="pull-right btn btn-sm btn-primary">
+                    </form>
                     <div class="card-body ">
                         <span class="font-weight-bold">First Name:</span> {{$profile->fname}}</br>
                         <span class="font-weight-bold">Last Name: </span>{{$profile->lname}}</br>

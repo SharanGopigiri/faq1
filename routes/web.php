@@ -37,6 +37,9 @@ Route::delete('/questions/{question_id}/answer/{answer_id}', 'AnswerController@d
 Route::resources([
     'questions' => 'QuestionController',
 ]);
+Route::post('profile', 'UserController@update_avatar');
+
+
 
 
 
