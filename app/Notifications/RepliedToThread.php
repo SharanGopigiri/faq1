@@ -21,7 +21,7 @@ class RepliedToThread extends Notification
      */
     public function __construct($question)
     {
-        $this->question=$question
+        $this->question=$question;
     }
 
     /**

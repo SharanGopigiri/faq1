@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Profile;
+use Auth;
 use Image;
 
 class UserController extends Controller
@@ -94,7 +95,7 @@ class UserController extends Controller
         if($request->hasFile('avatar')){
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            dd(is_writable('home/sharan/uploads/'. $filename));
+
             Image::make($avatar)->resize(300, 300)->save( 'home/sharan/uploads/'. $filename);
 
             $user = Auth::user();
