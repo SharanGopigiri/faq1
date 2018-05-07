@@ -47,6 +47,26 @@ Route::get('/test',function(){
 });
 
 
+Route::group(['middleware' => 'App\Http\Middleware\Admin'], function()
+{
+    Route::match(['get', 'post'], '/admin/', 'HomeController@admin');
+
+});
+
+Route::group(['middleware' => 'App\Http\Middleware\Agent'], function()
+{
+    Route::match(['get', 'post'], '/agent/', 'HomeController@agent');
+
+});
+
+Route::group(['middleware' => 'App\Http\Middleware\Customer'], function()
+{
+    Route::match(['get', 'post'], '/customer/', 'HomeController@customer');
+
+});
+
+
+
 
 
 
