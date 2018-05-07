@@ -2,7 +2,11 @@
 
 namespace Tests\Unit;
 
+use http\Env\Request;
 use Tests\TestCase;
+
+use App\Http\Middleware\Admin;
+
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -42,6 +46,9 @@ class UserTest extends TestCase
         $user = factory(\App\User::class)->make();
         $this->assertTrue(is_object($user->notifications()->get()));
     }
+
+
+
 
 
 
