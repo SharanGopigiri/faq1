@@ -37,6 +37,12 @@ class UserTest extends TestCase
         $this->assertTrue(is_object($user->answers()->get()));
     }
 
+    public function testNotification()
+    {
+        $user = factory(\App\User::class)->make();
+        $this->assertTrue(is_object($user->notifications()->get()));
+    }
+
 
 
 }
