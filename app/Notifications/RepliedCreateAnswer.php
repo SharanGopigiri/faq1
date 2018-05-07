@@ -8,11 +8,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Carbon\Carbon;
 
-class RepliedToThread extends Notification
+class RepliedCreateAnswer extends Notification
 {
     use Queueable;
 
-    protected $question;
+
     protected $answer;
 
 
@@ -21,11 +21,11 @@ class RepliedToThread extends Notification
      *
      * @return void
      */
-    public function __construct($question)
-    {
-        $this->question=$question;
-    }
 
+    public function __construct($answer)
+    {
+        $this->answer=$answer;
+    }
     /**
      * Get the notification's delivery channels.
      *

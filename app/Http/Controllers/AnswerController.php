@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
+use App\Notifications\notify;
+use App\Notifications\RepliedCreateAnswer;
 use App\Question;
 use App\User;
 use Illuminate\Support\Facades\Auth;
-
+use App\Notifications\RepliedToThread;
 use Illuminate\Http\Request;
+
+
 
 class AnswerController extends Controller
 {
@@ -28,6 +32,8 @@ class AnswerController extends Controller
     public function create($question)
     {
         $answer = new Answer;
+
+        auth()->user()->notify(new RepliedCreateAnswer($answer));
 
 
 
@@ -58,6 +64,8 @@ class AnswerController extends Controller
         $Answer->user()->associate(Auth::user());
         $Answer->question()->associate($question);
         $Answer->save();
+
+        //Auth::user() ->notify(new notify());
 
         return redirect()->route('questions.show',['question_id' => $question->id])->with('message', 'Saved');
     }
