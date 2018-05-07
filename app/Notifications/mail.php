@@ -18,7 +18,7 @@ class mail extends Notification
      */
     public function __construct()
     {
-        //
+       //
     }
 
     /**

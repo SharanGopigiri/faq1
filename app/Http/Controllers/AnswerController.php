@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Answer;
 use App\Notifications\mail;
-use App\Notifications\notify;
 use App\Notifications\RepliedCreateAnswer;
 use App\Question;
 use App\User;
