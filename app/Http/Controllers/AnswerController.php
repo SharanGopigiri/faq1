@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
+use App\Notifications\mail;
 use App\Notifications\notify;
 use App\Notifications\RepliedCreateAnswer;
 use App\Question;
@@ -65,7 +66,7 @@ class AnswerController extends Controller
         $Answer->question()->associate($question);
         $Answer->save();
 
-        Auth::user() ->notify(new notify());
+        Auth::user() ->notify(new mail());
 
         return redirect()->route('questions.show',['question_id' => $question->id])->with('message', 'Saved');
     }
