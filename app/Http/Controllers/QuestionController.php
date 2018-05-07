@@ -34,7 +34,7 @@ class QuestionController extends Controller
 
         $question = new Question;
 
-        auth()->user()->notify(new RepliedToThread($question));
+        auth()->user()->notify(new RepliedToThread('replied_to_thread'));
 
         $edit = FALSE;
 

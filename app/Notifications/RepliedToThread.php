@@ -56,16 +56,17 @@ class RepliedToThread extends Notification
         ];
     }
 
-/**
- * Get the array representation of the notification.
- *
- * @param  mixed $notifiable
- * @return array
- */
-public function toDatabase($notifiable)
-{
-    return [
-        'repliedTime'=>Carbon::now()
-    ];
-}
+    /**
+     * Get the array representation of the notification.
+     *
+     * @param  mixed $notifiable
+     * @return array
+     */
+    public function toDatabase($notifiable)
+    {
+        return [
+            'type' =>$this->question,
+            'repliedTime'=>Carbon::now()
+        ];
+    }
 }

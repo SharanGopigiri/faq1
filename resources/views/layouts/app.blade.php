@@ -64,10 +64,8 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                                 @foreach(auth()->user()->unreadNotifications as $notification)
-                                    @include('layouts.notification.'.snake_case(class_basename($notification->type)))
+                                    @include('layouts.notification.'.snake_case(class_basename($notification->data['type'])))
                                 @endforeach
-
-
 
                             </div>
                         </li>

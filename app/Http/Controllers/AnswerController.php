@@ -6,8 +6,9 @@ use App\Answer;
 use App\Question;
 use App\User;
 use Illuminate\Support\Facades\Auth;
-
+use App\Notifications\RepliedToThread;
 use Illuminate\Http\Request;
+use Mail;
 
 class AnswerController extends Controller
 {
@@ -29,7 +30,7 @@ class AnswerController extends Controller
     {
         $answer = new Answer;
 
-
+        auth()->user()->notify(new RepliedToThread('replied_create_answer'));
 
         $edit = FALSE;
         return view('answerForm', ['answer' => $answer,'edit' => $edit, 'question' =>$question  ]);
@@ -52,6 +53,10 @@ class AnswerController extends Controller
             'body.min' => 'Body must be at least 5 characters',
 
         ]);
+
+        $user = Auth::user();
+
+
         $input = request()->all();
         $question = Question::find($question);
         $Answer = new Answer($input);
