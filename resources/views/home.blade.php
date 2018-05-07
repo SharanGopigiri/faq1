@@ -12,7 +12,6 @@
 
                             You are logged in! as <strong>{{ strtoupper(Auth::user()->role) }}</strong>
 
-                           
                         </div>
                     </div>
 
