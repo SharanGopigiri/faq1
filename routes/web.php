@@ -46,21 +46,19 @@ Route::get('/test',function(){
     }
 });
 
-Route::group(['middleware' => ‘App\Http\Middleware\AdminMiddleware’], function()
-{
-    Route::match(['get', 'post'], '/adminOnlyPage/', 'HomeController@admin');
-});
 
-Route::group(['middleware' => ‘App\Http\Middleware\MemberMiddleware’], function()
-{
-    Route::match(['get', 'post'], '/memberOnlyPage/', 'HomeController@member');
-});
 
-Route::group(['middleware'=> ‘App\Http\Middleware\SuperAdminMiddleware’], function()
-{
-    Route::match(['get', 'post'], '/superAdminOnlyPage/', 'HomeController@super_admin');
-});
+Route::get('/adminOnlyPage', function(){
+    echo "Hello Admin";
+})->middleware('auth','admin');
 
+Route::get('/memberOnlyPage', function(){
+    echo "Hello Member";
+})->middleware('auth','member');
+
+Route::get('/superAdminOnlyPage', function(){
+    echo "Hello SuperAdmin";
+})->middleware('auth','super_admin');
 
 
 

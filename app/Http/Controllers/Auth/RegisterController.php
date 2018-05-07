@@ -52,6 +52,7 @@ class RegisterController extends Controller
 
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'type' => 'required|in:admin,super_admin,member', //validate type input
         ]);
     }
 
@@ -65,7 +66,7 @@ class RegisterController extends Controller
     {
         return User::create([
 
-            'name' => $data['name'],
+
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
 
